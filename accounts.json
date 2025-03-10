@@ -36,7 +36,7 @@
           "base64"
         ],
         "executable": false,
-        "lamports": 21784527385,
+        "lamports": 21980721560,
         "owner": "11111111111111111111111111111111",
         "rentEpoch": 18446744073709551615,
         "space": 0
@@ -92,7 +92,7 @@
           "base64"
         ],
         "executable": false,
-        "lamports": 994169030269,
+        "lamports": 997655268209,
         "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
         "rentEpoch": 18446744073709551615,
         "space": 82
