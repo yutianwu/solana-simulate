@@ -113,13 +113,17 @@ impl Simulator {
             })
             .collect();
 
+        Self::new_with_accounts(accounts_slice)
+    }
+
+    pub fn new_with_accounts(accounts: Vec<(Pubkey, AccountSharedData)>) -> Self {
         let batch_processor = TransactionBatchProcessor::<MockForkGraph>::new_uninitialized(
             EXECUTION_SLOT,
             EXECUTION_EPOCH,
         );
 
         Self {
-            account_map: accounts_slice,
+            account_map: accounts,
             transaction_processor: Arc::new(RwLock::new(batch_processor)),
         }
     }
