@@ -4112,6 +4112,7 @@ dependencies = [
  "serde_json",
  "solana-bpf-loader-program",
  "solana-compute-budget",
+ "solana-compute-budget-program",
  "solana-program-runtime",
  "solana-sdk",
  "solana-svm",

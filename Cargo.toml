@@ -13,6 +13,7 @@ reqwest = { version = "0.12.12", features = ["json"] }
 serde_json = "1.0.114"
 solana-bpf-loader-program = "2.2.1"
 solana-compute-budget = "2.2.1"
+solana-compute-budget-program = "2.2.1"
 solana-program-runtime = "2.2.1"
 solana-sdk = "2.2.1"
 solana-svm = "2.2.1"

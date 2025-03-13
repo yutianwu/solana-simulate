@@ -20,6 +20,7 @@ use {
     solana_sdk::{
         account::{Account, AccountSharedData},
         clock::{Clock, Slot, UnixTimestamp, MAX_PROCESSING_AGE, MAX_TRANSACTION_FORWARDING_DELAY},
+        compute_budget,
         feature_set::FeatureSet,
         inner_instruction::InnerInstructions,
         message::{AccountKeys, AddressLoader, AddressLoaderError},
@@ -27,6 +28,7 @@ use {
         native_loader,
         nonce::state::DurableNonce,
         pubkey::Pubkey,
+        rent::Rent,
         sysvar::SysvarId,
         transaction::{SanitizedTransaction, TransactionError},
         transaction_context::{TransactionAccount, TransactionReturnData},
@@ -160,6 +162,18 @@ impl Simulator {
                 system_processor::Entrypoint::vm,
             ),
         );
+
+        transaction_processor.add_builtin(
+            &mock_bank,
+            compute_budget::id(),
+            "compute_budget_program",
+            ProgramCacheEntry::new_builtin(
+                0,
+                b"compute_budget_program".len(),
+                solana_compute_budget_program::Entrypoint::vm,
+            ),
+        );
+
         // Add the BPF Loader v2 builtin, for the SPL Token program.
         transaction_processor.add_builtin(
             &mock_bank,
@@ -479,7 +493,11 @@ pub fn create_executable_environment(
             if account.executable() && *account.owner() == solana_sdk::bpf_loader_upgradeable::id()
             {
                 let data = account.data();
+
+                println!("{} {}", key, &data[4..].to_vec().len());
+
                 let program_data_account_key = Pubkey::try_from(data[4..].to_vec()).unwrap();
+
                 let program_data_account = mock_bank
                     .get_account_shared_data(&program_data_account_key)
                     .unwrap();
@@ -520,11 +538,21 @@ pub fn create_executable_environment(
         unix_timestamp: time_now as UnixTimestamp,
     };
 
-    let mut account_data = AccountSharedData::default();
-    account_data.set_data_from_slice(bincode::serialize(&clock).unwrap().as_slice());
+    let mut clock_account_data = AccountSharedData::default();
+    clock_account_data.set_data_from_slice(bincode::serialize(&clock).unwrap().as_slice());
+
+    let rent = Rent::default();
+    let mut rent_account_data = AccountSharedData::default();
+    rent_account_data.set_data_from_slice(bincode::serialize(&rent).unwrap().as_slice());
+
     mock_bank
         .account_shared_data
         .write()
         .unwrap()
-        .insert(Clock::id(), account_data);
+        .insert(Clock::id(), clock_account_data);
+    mock_bank
+        .account_shared_data
+        .write()
+        .unwrap()
+        .insert(Rent::id(), rent_account_data);
 }

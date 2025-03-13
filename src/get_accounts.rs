@@ -59,6 +59,7 @@ struct Context {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let accounts = vec![
+
         "H7GCUaJMUgdQiNYyoQTTmwG4fSYMV8W8ECmATZ2kyNTJ",
         "A3TiDsQgQFKSLXcj51Jiigm4Fd4F27GGrsXAsHaXh3E1",
         "5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1",
@@ -70,7 +71,76 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
         "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
         "A7ZG7ByDi8DpzT9Ab7CiXhvgYTJQmaDPJkMDoPitaCQV",
-        "14ryLxgtBbjF6RvdkPb8z4c3R46Dj5WprCVAGtW7EzpN",
+
+        // "H7GCUaJMUgdQiNYyoQTTmwG4fSYMV8W8ECmATZ2kyNTJ",
+        // "D7zxvjRy4jmzM4YAQ37RvyBLPZL2Km7Tbc4Pu4SQZ8Pz",
+        // "Hxw77h9fEx598afiiZunwHaX3vYu9UskDk9EpPNZp1mG",
+        // // "ComputeBudget111111111111111111111111111111",
+        // // "11111111111111111111111111111111",
+        // "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        // "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+        // "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+        // "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+        // "CtXfPzz36dH5Ws4UYKZvrQ1Xqzn42ecDW6y8NKuiN8nD",
+        // "SysvarRent111111111111111111111111111111111",
+        // "3AVi9Tg9Uo68tJfuvoKvqKNWKkC5wPdSSdeBnizKZ6jT",
+        // "DLZSeiq2xjikgwcniQB6B89uodkbQHrTcco6mJu9UNuK",
+        // "F25nyBGmRtMYBC7hw7kqmHWzCkwCzBBGWGpzdg8rHxXV",
+        // "23wrJvTfDLdsqjM17pZ3PEDRJ6BFWJea92Y4FHELsHim",
+        // "AJjVJZzuh1Wvbz7ZcrYRr579K3KR18WSb9L5mECJLxS9",
+        // "DuBdX4KesVdEmoXgNerTWCo9acYQbM7rb4HYar83TUC3",
+
+        // "H7GCUaJMUgdQiNYyoQTTmwG4fSYMV8W8ECmATZ2kyNTJ",
+        // "4kqUgKUi4iuZQWFnqTW4weoRrvwq67FcdCVoSKcWmSzJ",
+        // "59YuGWPunbchD2mbi9U7qvjWQKQReGeepn4ZSr9zz9Li",
+        // "5rCf1DM8LjKTw4YqhnoLcngyZYeNnQqztScTogYHAS6",
+        // "CoaxzEh8p5YyGLcj36Eo3cUThVJxeKCs7qvLAGDYwBcz",
+        // "Ehkf9XQLVnY8HV6jbbDU25fTxF1qQ3NuScWfawSb79pu",
+        // "EYj9xKw6ZszwpyNibHY7JD5o3QgTVrSdcBp1fMJhrR9o",
+        // "11111111111111111111111111111111",
+        // "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+        // "ComputeBudget111111111111111111111111111111",
+        // "D1ZN9Wj1fRSUQfCjhvnu1hqDMT7hzjzBBpi12nVniYD6",
+        // "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        // "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+        // "So11111111111111111111111111111111111111112",
+        // "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        // "HZcJwcJ2njPDxZtpPoKnF8v2w9QAx2rS7TdJPSRkbEhu",
+
+        // "H7GCUaJMUgdQiNYyoQTTmwG4fSYMV8W8ECmATZ2kyNTJ",
+        // "3fmSwzBY2TYStZwtdzBmGkdAHcTThsuowSKLVCgqLMXx",
+        // "4kdxjt8pKEW4qV4ji4HANixwswDJw3Egn8L4x2BEWQqT",
+        // "6vwm1hbRj5u8ELuiyLiAmVPnLiQ77XiHjZzpGyrYhQXv",
+        // "AY4mkttNs3vhS5YaPuUY5X54WfuzKoD7HgbPx79DqSUY",
+        // "EUjny9fc82MedgDfC5WM9dC9FFXh5BDrtTuDMAa7RwMs",
+        // "ZJJc42SVCwyb6ZiW6ivVB51jUmEyZb3pLrFhgFAvFdq",
+        // "11111111111111111111111111111111",
+        // "3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh",
+        // "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+        // "ComputeBudget111111111111111111111111111111",
+        // "D1ZN9Wj1fRSUQfCjhvnu1hqDMT7hzjzBBpi12nVniYD6",
+        // "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+        // "So11111111111111111111111111111111111111112",
+        // "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        //
+        // "H7GCUaJMUgdQiNYyoQTTmwG4fSYMV8W8ECmATZ2kyNTJ",
+        // "4kqUgKUi4iuZQWFnqTW4weoRrvwq67FcdCVoSKcWmSzJ",
+        // "59YuGWPunbchD2mbi9U7qvjWQKQReGeepn4ZSr9zz9Li",
+        // "5rCf1DM8LjKTw4YqhnoLcngyZYeNnQqztScTogYHAS6",
+        // "CoaxzEh8p5YyGLcj36Eo3cUThVJxeKCs7qvLAGDYwBcz",
+        // "Ehkf9XQLVnY8HV6jbbDU25fTxF1qQ3NuScWfawSb79pu",
+        // "EYj9xKw6ZszwpyNibHY7JD5o3QgTVrSdcBp1fMJhrR9o",
+        // "11111111111111111111111111111111",
+        // "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+        // "ComputeBudget111111111111111111111111111111",
+        // "D1ZN9Wj1fRSUQfCjhvnu1hqDMT7hzjzBBpi12nVniYD6",
+        // "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        // "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+        // "So11111111111111111111111111111111111111112",
+        // "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        // "HZcJwcJ2njPDxZtpPoKnF8v2w9QAx2rS7TdJPSRkbEhu",
+        // "SysvarRent111111111111111111111111111111111"
+
     ];
 
     let mut response = AccountResponse {
@@ -102,7 +172,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .json(&rpc_req)
             .send()
             .await?;
-
+        println!("{}", acc);
         let body = res.text().await?;
         println!("{}", body);
 
